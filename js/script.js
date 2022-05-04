@@ -7,8 +7,7 @@ function playTheGame() {
 }
 
 function one() {
-  let num;
-  let promptNum = prompt("Enter a number between 0 and 10", num);
+  let promptNum = prompt("Enter a number between 0 and 10");
   console.log(promptNum);
   if (isNaN(promptNum)) {
     console.log("Sorry Not a number, Goodbye");
@@ -30,12 +29,27 @@ function test(userNumber, computerNumber) {
 
   for (let x = numberList.length; x <= 3; x++) {
     if (x === 3) {
-      console.log("close");
+      alert("Out of chances");
+      return;
     } else {
-      let newprompt = prompt("Enter a number between 0 and 10", userNumber);
-      console.log(newprompt);
-      numberList.push(newprompt);
-      console.log("x =" + x);
+      let newprompt = prompt(
+        `Enter a number between 0 and 10 [ATTEMPT ${x + 1}]`
+      );
+      userNumber = newprompt;
+      if (userNumber > computerNumber) {
+        // console.log("newprompt =" + newprompt);
+        // console.log("new usernumber =" + userNumber);
+        // console.log("new computerNumber =" + computerNumber);
+        numberList.push(newprompt);
+      } else if (userNumber < computerNumber) {
+        // console.log("newprompt =" + newprompt);
+        // console.log("new usernumber =" + userNumber);
+        // console.log("new computerNumber =" + computerNumber);
+        numberList.push(newprompt);
+      } else if (userNumber == computerNumber) {
+        alert("WINNER");
+        return;
+      }
     }
   }
 }
